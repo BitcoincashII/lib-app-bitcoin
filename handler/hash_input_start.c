@@ -83,7 +83,8 @@ WEAK unsigned short handler_hash_input_start(buffer_t *buffer, uint8_t p1,
       context.transactionContext.relaxed = 0;
       context.usingSegwit = usingSegwit;
 
-      if (COIN_KIND == COIN_KIND_BITCOIN_CASH) {
+      if ((COIN_KIND == COIN_KIND_BITCOIN_CASH) ||
+          (COIN_KIND == COIN_KIND_BITCOIN_CASH_II)) {
         unsigned char usingCashAddr = (p2 == P2_NEW_SEGWIT_CASHADDR);
         context.usingCashAddr = usingCashAddr;
       } else {

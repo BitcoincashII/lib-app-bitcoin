@@ -79,9 +79,13 @@ static int convert_bits(uint8_t *out, size_t *outlen, int outbits,
   return 1;
 }
 
+#ifndef COIN_CASHADDR_PREFIX
+#define COIN_CASHADDR_PREFIX "bitcoincash"
+#endif
+
 void create_checksum(uint8_t *payload, size_t payload_length,
                      uint8_t *checksum) {
-  uint8_t *prefix = (uint8_t *)"bitcoincash";
+  uint8_t *prefix = (uint8_t *)COIN_CASHADDR_PREFIX;
   uint64_t mod = PolyMod(prefix, payload, payload_length);
 
   for (size_t i = 0; i < 8; ++i) {

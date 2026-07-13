@@ -168,7 +168,8 @@ WEAK unsigned char output_script_is_native_witness(unsigned char *buffer) {
  *
  */
 WEAK unsigned char output_script_is_op_return(unsigned char *buffer) {
-  if (COIN_KIND == COIN_KIND_BITCOIN_CASH) {
+  if ((COIN_KIND == COIN_KIND_BITCOIN_CASH) ||
+      (COIN_KIND == COIN_KIND_BITCOIN_CASH_II)) {
     return ((buffer[1] == 0x6A) ||
             ((buffer[1] == 0x00) && (buffer[2] == 0x6A)));
   } else {
